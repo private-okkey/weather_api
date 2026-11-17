@@ -1,0 +1,26 @@
+services:
+  backend:
+    build: ./backend
+    command: bundle exec rails server -b 0.0.0.0
+    ports:
+      - "127.0.0.1:3000:3000"
+    volumes:
+      - ./backend:/app
+    environment:
+      DB_HOST: db
+      DB_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD is required}
+  frontend:
+    build: ./frontend
+    command: npm run dev -- --host 0.0.0.0
+    ports:
+      - "127.0.0.1:5173:5173"
+    volumes:
+      - ./frontend:/app
+  db:
+    image: mysql:8.4
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD is required}
+    volumes:
+      - db_data:/var/lib/mysql
+volumes:
+  db_data:

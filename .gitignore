@@ -1,0 +1,26 @@
+# 環境変数
+.env
+.env.*
+!.env.example
+
+# Railsの暗号化キー
+/backend/config/master.key
+/backend/config/credentials/*.key
+
+# Railsの生成ファイル
+/backend/log/*
+/backend/tmp/*
+/backend/storage/*
+/backend/vendor/bundle/
+/backend/.bundle/
+!/backend/log/.keep
+!/backend/tmp/.keep
+!/backend/storage/.keep
+
+# React
+/frontend/node_modules/
+/frontend/dist/
+
+# OS
+.DS_Store
+Thumbs.db
